@@ -10,7 +10,6 @@ app.use(bodyParser.urlencoded({ extended: false}));
 app.use(cors());
 
 const passport = require('passport');
-const user = require('./model/User');
 
 require('./controller/login')(app)
 require('./controller/authController')(app)
