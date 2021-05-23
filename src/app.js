@@ -1,24 +1,9 @@
-const express = require('express');
-const app = express();
+const express = require('express')
+const app = express()
+require('dotenv').config("../.env")
+const port = process.env.PORT || 5000
+const Routers = require("./routers/main")
 
-var path = require('path');
-const bodyParser = require('body-parser');
-const cors = require('cors');
+app.get('/' , Routers);
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false}));
-app.use(cors());
-
-const passport = require('passport');
-
-require('./controller/login')(app)
-require('./controller/authController')(app)
-
-app.get('/', function (req, res) {
-  res.send("Hello World!");
-});
-const porta = process.env.PORT || 3000;
-
-app.listen(porta, () =>{
-  console.log('Listening on port 3000!');
-});
+app.listen(port , ()=> console.log('> Server is up and running on port : ' + port))
