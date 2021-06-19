@@ -1,9 +1,17 @@
-const express = require('express')
-const app = express()
-require('dotenv').config("../.env")
-const port = process.env.PORT || 5000
-const Routers = require("./routers/main")
+const express = require('express');
+const app = express();
 
-app.get('/' , Routers);
+app.use(express.json());
+require('dotenv').config("../.env");
+require('./database/db');
 
-app.listen(port , ()=> console.log('> Server is up and running on port : ' + port))
+app.get("/", (req, res, next) => {
+    res.send('Aplicação esta online')
+});
+
+require("./routers/index")(app);
+
+// Inicialização 
+app.listen(process.env.PORT, () => {
+    console.log(`==> Server is up and running on port : ${process.env.port}`);
+});
