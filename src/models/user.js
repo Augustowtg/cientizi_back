@@ -1,23 +1,26 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
-// Create user
+// Criação da coleção 
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
-        require: 'Nome é obrigatorio'
+        required: 'Nome é obrigatorio'
     },
     email: {
         type: String,
-        require: "Email é obrigatorio",
+        required: 'Email é obrigatorio',
         unique: true
     },
     password: {
-        type: String
+        type: String,
+        required: 'Senha é obrigatorio'
     },
     createAt: {
         type: Date,
-        default: Date.now
+        default: Date.now,
+        select: false
     },
     saltSecret: {
         type: String,
@@ -41,5 +44,20 @@ userSchema.pre('save', function (next) {
         });
     });
 });
+
+
+// Metodos
+userSchema.methods.verifyPassword = function (password) {
+    return bcrypt.compareSync(password, this.password);
+};
+
+// Gerar o tokin baseado no id
+userSchema.methods.generateJwt = function () {
+    return jwt.sign({ _id: this._id},
+        process.env.JWT_SECRET,
+    {
+        expiresIn: process.env.JWT_EXP
+    });
+}
 
 mongoose.model('User', userSchema);

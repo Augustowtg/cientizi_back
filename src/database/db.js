@@ -8,7 +8,7 @@ mongoose.connect(process.env.MONGODB_URL, {
 }).then(() => {
     console.log('==> Database connected');
 }).catch((err) => {
-    console.log('Error in MongoDB connection : ' + JSON.stringify(err, undefined, 2));
+    console.log('Error in MongoDB connection : ' + err);
 });
 
 require('../models/user');

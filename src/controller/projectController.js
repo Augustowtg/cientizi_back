@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Project = mongoose.model('Project')
+const Project = mongoose.model('Project');
 
 const projectRegister = (req, res, next) => {
     const { name, description, creator } = req.body
