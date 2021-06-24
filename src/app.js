@@ -18,7 +18,8 @@ app.get("/", (req, res, next) => {
 });
 
 // Rotas
-require("./routers/index")(app);
+require("./routers/projectRouter")(app);
+require("./routers/userRouter")(app);
 
 // Inicialização 
 app.listen(process.env.PORT, () => {
