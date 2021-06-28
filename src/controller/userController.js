@@ -16,6 +16,23 @@ const userProfile = async (req, res, next) => {
     );
 };
 
+// Enviar o perfil do usuario
+const profile = async (req, res, next) => {
+    await User.findOne({ _id: req._id }, ["-_id", "-password", "-__v"],
+        (err, user) => {
+            if (!user)
+                return res.status(404).json({ Status: false, message: 'Usuario não foi achado' });
+            else {
+                _.pick(user, ['name'])
+                req.user = user
+                next()
+            }
+                
+        }
+    );
+};
+
 module.exports = {
     userProfile,
+    profile
 }

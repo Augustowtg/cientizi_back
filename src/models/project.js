@@ -8,17 +8,8 @@ const projectSchema = new mongoose.Schema({
         require: true,
         unique: true
     },
-    Users: [
-        { 
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'User' 
-        }
+    users: [
     ],
-
-    creator: {
-    type: String,
-    required: 'Creator é obrigatorio',
-},
     createAt: {
     type: Date,
     default: Date.now
