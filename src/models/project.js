@@ -6,10 +6,17 @@ const projectSchema = new mongoose.Schema({
     name: {
         type: String,
         require: true,
-        unique: true
     },
     users: [
     ],
+    objective: {
+        type: String,
+    },
+
+    description: {
+        type: String,
+        require: true
+    },
     createAt: {
     type: Date,
     default: Date.now
