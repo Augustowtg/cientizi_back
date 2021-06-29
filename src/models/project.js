@@ -3,6 +3,9 @@ const User = mongoose.model('User');
 
 // Create project
 const projectSchema = new mongoose.Schema({
+    icon: {
+        type: String
+    },
     name: {
         type: String,
         require: true,

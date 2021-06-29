@@ -22,6 +22,7 @@ app.get("/", (req, res, next) => {
 // Rotas
 require("./routers/projectRouter")(app);
 require("./routers/userRouter")(app);
+require("./routers/upload")(app);
 
 // Inicialização 
 app.listen(process.env.PORT, () => {

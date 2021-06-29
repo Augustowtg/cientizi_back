@@ -7,7 +7,7 @@ const JWT = require('../middleware/jwt');
 // Controllers 
 const authController = require('../controller/authController');
 const userController = require('../controller/userController');
-const multerupload = require('../config/multer')
+
 
 // Rotas do usuario
 router.post("/user/register", authController.register);

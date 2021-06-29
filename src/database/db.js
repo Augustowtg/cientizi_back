@@ -13,3 +13,4 @@ mongoose.connect(process.env.MONGODB_URL, {
 
 require('../models/user');
 require('../models/project');
+require('../models/upload');

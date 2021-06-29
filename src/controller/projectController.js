@@ -1,10 +1,9 @@
-const { request } = require('express');
 const mongoose = require('mongoose');
 const Project = mongoose.model('Project');
-const userRouter = require('../routers/userRouter')
 
 const projectRegister = async (req, res, next) => {
     const project = new Project();
+    project.icon = req.uplaod_url;
     project.name = req.body.name;
     project.objective = req.body.objective;
     project.description = req.body.description;

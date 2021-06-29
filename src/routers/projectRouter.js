@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-
 // Middlewares
 const JWT = require('../middleware/jwt');
 
@@ -11,5 +10,6 @@ const userController = require('../controller/userController');
 // Rotas do projeto
 router.post("/project/register", JWT.verifyJwtToken, userController.profile, projectController.projectRegister);
 router.get("/project/list", projectController.projectlist,);
+
 
 module.exports = app => app.use("/", router);
