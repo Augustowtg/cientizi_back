@@ -7,16 +7,17 @@ const uploadImagen = async (req, res, next) => {
         req.uplaod_url = process.env.UPLOAD_URL;
         next()
     }
-    const { originalname: name, size, key, location: url = "" } = req.file;
-
-    const upload = await Upload.create({
-        name,
-        size,
-        key,
-        url
-    });
-    req.uplaod_url = upload.url;
-    next()
+    else {
+        const { originalname: name, size, key, location: url = "" } = req.file;
+        const upload = await Upload.create({
+            name,
+            size,
+            key,
+            url
+        });
+        req.uplaod_url = upload.url;
+        next()
+    }
 };
 
 module.exports = {
