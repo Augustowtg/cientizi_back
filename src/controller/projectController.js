@@ -25,7 +25,7 @@ const projectRegister = async (req, res, next) => {
 const projectlist = async (req, res, next) => {
     const projects = await Project
         .find()
-        .select('users name objective icon description _id');
+        .select('users name objective banner icon description _id');
     return res.status(200).json({ Status: 200, message: projects });
 }
 
