@@ -11,7 +11,9 @@ const uploadController = require('../controller/uploadController');
 router.post("/project/register", JWT.verifyJwtToken, userController.profile, 
 uploadController.uploadImagen , projectController.projectRegister);
 
-router.get("/project/list", projectController.projectlist,);
+router.get("/project/list", projectController.projectlist);
+router.post('project/consult', projectController.projectConsult);
+router.post('/project/project', projectController.projectIndividual);
 
 
 module.exports = app => app.use("/", router);
