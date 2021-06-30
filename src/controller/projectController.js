@@ -42,7 +42,6 @@ const projectConsult = async (req, res, next) => {
 
 // Enviar o perfil do projeto
 const projectIndividual = async (req, res, next) => {
-    console.log(req.body.project);
     await Project.findOne({ _id: req.body.project },
         (err, project) => {
             if (!project)
